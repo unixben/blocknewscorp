@@ -1,41 +1,31 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Build All Blocklists
-
-# Controls when the action will run. 
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+    - name: Checkout Repp
+      uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Build Adguard blocklist
-        run: "sed -e 's/.*/||&^$important/' domains.txt > hosts_adguard.txt"
-      - name: Build Hosts file with 0.0.0.0
-        run: "sed -e $'s/.*/0.0.0.0\t&/' domains.txt > hosts_0.0.0.0.txt"
-      - name: Build Hosts file with 127.0.0.1
-        run: "sed -e $'s/.*/127.0.0.1\t&/' domains.txt > hosts_127.0.0.1.txt"
-      - name: Commit files
-        run: |
-          git config --global user.name 'BlockNewsCorp Builder'
-          git config --global user.email 'unixben@users.noreply.github.com'
-          git add .
-          git commit -am "Updated blocklists"
-          git push
+    - name: Build Adguard blocklist
+      run: "sed -e 's/.*/||&^$important/' domains.txt > hosts_adguard.txt"
+    - name: Build Hosts file with 0.0.0.0
+      run: "sed -e $'s/.*/0.0.0.0\t&/' domains.txt > hosts_0.0.0.0.txt"
+    - name: Build Hosts file with 127.0.0.1
+      run: "sed -e $'s/.*/127.0.0.1\t&/' domains.txt > hosts_127.0.0.1.txt"
+    - name: Commit files
+      uses: EndBug/add-and-commit@v5
+      with:
+        author_name: BlockNewsCorp Builder
+        author_email: unixben@users.noreply.github.com
+        message: "Updated blocklists"
+        add: "*.txt"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
