@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build Adguard blocklist
+name: Build Hosts file (127.0.0.1) blocklist
 
 # Controls when the action will run. 
 on:
@@ -27,11 +27,11 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: "sed -e 's/.*/||&^$important/' domains.txt >> hosts_adguard.txt"
+        run: "sed -e $'s/.*/127.0.0.1\t&/' domains.txt >> hosts_127.0.0.1.txt"
       - name: Commit file
         run: |
           git config --global user.name 'BlockNewsCorp Builder'
           git config --global user.email 'unixben@users.noreply.github.com'
-          git add hosts_adguard.txt
-          git commit -am "AdGuard Hosts file"
+          git add hosts_127.0.0.1.txt
+          git commit -am "Hosts file with 127.0.0.1"
           git push
