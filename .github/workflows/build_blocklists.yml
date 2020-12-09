@@ -11,15 +11,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repp
+    - name: Checkout Repo
       uses: actions/checkout@v2
 
     - name: Build Adguard blocklist
-      run: "sed -e 's/.*/||&^$important/' domains.txt > hosts_adguard.txt"
+      run: sed -e 's/.*/||&^$important/' domains.txt > hosts_adguard.txt
     - name: Build Hosts file with 0.0.0.0
-      run: "sed -e $'s/.*/0.0.0.0\t&/' domains.txt > hosts_0.0.0.0.txt"
+      run: sed -e 's/.*/0.0.0.0 &/' domains.txt > hosts_0.0.0.0.txt
     - name: Build Hosts file with 127.0.0.1
-      run: "sed -e $'s/.*/127.0.0.1\t&/' domains.txt > hosts_127.0.0.1.txt"
+      run: sed -e 's/.*/127.0.0.1 &/' domains.txt > hosts_127.0.0.1.txt
     - name: Commit files
       uses: EndBug/add-and-commit@v5
       with:
