@@ -32,7 +32,8 @@ jobs:
         run: |
           git config --global user.name 'BlockNewsCorp Builder'
           git config --global user.email 'unixben@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git checkout "${GITHUB_REF:11}"
+          # git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          # git checkout "${GITHUB_REF:11}"
+          git add hosts_adguard.txt
           git commit -am "AdGuard Hosts file"
           git push
