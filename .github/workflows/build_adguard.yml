@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Build Adguard Hosts file
 
 # Controls when the action will run. 
 on:
@@ -27,4 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: "sed -e 's/.*/||&^$important/' hosts_adguard.txt"
+        run: "sed -e 's/.*/||&^$important/' hosts.txt >> hosts_adguard.txt"
