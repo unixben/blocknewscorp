@@ -28,3 +28,11 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: "sed -e 's/.*/||&^$important/' hosts.txt >> hosts_adguard.txt"
+      - name: Commit report
+        run: |
+          git config --global user.name 'BlockNewsCorp Builder'
+          git config --global user.email 'unixben@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git checkout "${GITHUB_REF:11}"
+          git commit -am "AdGuard Hosts file"
+          git push
