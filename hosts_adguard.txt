@@ -29,6 +29,7 @@
 ||foxclassics.com.au^$important
 ||foxcomedy.it^$important
 ||foxkids.com^$important
+||foxnews.com.au^$important
 ||foxshowcase.com.au^$important
 ||foxsports.com.au^$important
 ||foxtel.com^$important

@@ -29,6 +29,7 @@
 0.0.0.0 foxclassics.com.au
 0.0.0.0 foxcomedy.it
 0.0.0.0 foxkids.com
+0.0.0.0 foxnews.com.au
 0.0.0.0 foxshowcase.com.au
 0.0.0.0 foxsports.com.au
 0.0.0.0 foxtel.com

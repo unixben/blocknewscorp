@@ -29,6 +29,7 @@
 127.0.0.1 foxclassics.com.au
 127.0.0.1 foxcomedy.it
 127.0.0.1 foxkids.com
+127.0.0.1 foxnews.com.au
 127.0.0.1 foxshowcase.com.au
 127.0.0.1 foxsports.com.au
 127.0.0.1 foxtel.com
